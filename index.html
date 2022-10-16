@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+
+<h2 class="w3-center">Patafornia Today</h2>
+
+<div class="w3-content w3-display-container" id="cont">
+
+    <script>
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+                hour= '' + d.getHours();
+                minute= '' + d.getMinutes();
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+            if (hour.length < 2) 
+                hour = '0' + hour;
+            if (minute.length < 2) 
+                minute = '0' + minute;       
+            
+            var strFecha=[year, month, day].join('-');
+            var strFecha2=[hour,minute].join('-');
+            return [strFecha,strFecha2].join('_');
+        }
+          var dateObj = new Date();
+          newdate = new Date(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate(),8);
+          var end = dateObj ;
+          var loop = newdate;
+        
+          while(loop <= end){
+            var div_slide = document.createElement("div");
+            div_slide.className="w3-display-container mySlides";
+            var div2_caption = document.createElement("div");
+            div2_caption.className="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black";
+            div2_caption.innerHTML=formatDate(loop);
+            const img = document.createElement("img");
+            img.style="width:100%"
+            img.src = 'https://storage.googleapis.com/patafornia.appspot.com/'+formatDate(loop)+'.jpg';
+            div_slide.appendChild(img);
+            div_slide.appendChild(div2_caption);
+            document.getElementById("cont").appendChild(div_slide);
+            loop.setTime(loop.getTime() + 15000 * 60);
+          }
+        //   var div_bt1 = document.createElement("BUTTON");
+        //   div_bt1.className="w3-button w3-black w3-display-left";
+        //   div_bt1.onclick="plusDivs(-1)";
+        //   div_bt1.innerHTML="&#10094";
+        //   var div_bt2 = document.createElement("BUTTON");
+        //   div_bt2.className="w3-button w3-black w3-display-right";
+        //   div_bt2.onclick="plusDivs(1)";
+        //   div_bt2.innerHTML="&#10095";
+        //   document.getElementById("cont").appendChild(div_bt1);
+        //   document.getElementById("cont").appendChild(div_bt2);
+        </script>
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+</body>
+</html>
