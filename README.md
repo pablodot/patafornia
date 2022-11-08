@@ -7,4 +7,5 @@ $ pip install --upgrade pip
 
 $ pip install --upgrade firebase_admin
 
-In a few days or years i want to develop edge inference to detect quality of waves, upload data to firestore and maybe email alerts Remember yur time is limited, enjoy!!
+In a few days or years i want to develop edge inference to detect quality of waves, upload data to firestore and maybe email alerts.
+Remember your time is limited, enjoy!!
