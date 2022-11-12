@@ -14,6 +14,7 @@
 <div class="w3-content w3-display-container" id="cont">
 
     <script>
+      //we could check if every image exists, but its too slow
         function formatDate(date) {
             var d = new Date(date),
                 month = '' + (d.getMonth() + 1),
@@ -35,11 +36,14 @@
             return [strFecha,strFecha2].join('_');
         }
           var dateObj = new Date();
-          newdate = new Date(dateObj.getUTCFullYear(), dateObj.getUTCMonth(), dateObj.getUTCDate(),8);
-          var end = dateObj ;
-          var loop = newdate;
-        
-          while(loop <= end){
+          //I stop taking shots at 21
+          var end = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 21);
+          //I start taking shots at 8
+          var loop = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 8);
+          console.log('loop:', loop);
+          console.log('end:', end);
+          console.log('dateObj:', dateObj);
+          while((loop<=dateObj)&&(loop<end)){
             var div_slide = document.createElement("div");
             div_slide.className="w3-display-container mySlides";
             var div2_caption = document.createElement("div");
@@ -67,7 +71,7 @@
   <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
   <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </div>
-
+<img style="width:100%" src='https://storage.googleapis.com/patafornia.appspot.com/plt.jpg'>
 <script>
 var slideIndex = 1;
 showDivs(slideIndex);

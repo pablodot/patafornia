@@ -13,8 +13,13 @@ for file in files:
 	print(file)
 	blob = bucket.blob(os.path.basename(file))
 	if not blob.exists():
-	    blob.upload_from_filename(file)
-	    blob.make_public()
-	    print("url", blob.public_url)
+		blob.upload_from_filename(file)
+		blob.make_public()
+		print("url", blob.public_url)
 	else:
-	    print(blob.name, 'ya existe')
+		if blob.name == 'plt.jpg':
+			blob.upload_from_filename(file)
+			blob.make_public()
+			print("url", blob.public_url)
+		else:
+			print(blob.name, 'ya existe')
