@@ -1,0 +1,2 @@
+*/15 7-18 * * * /home/pablo/cron.sh >> /home/pablo/raspilog.txt 2>&1 && python /home/pablo/inference_edge.py >> /home/pablo/raspilog.txt && python /home/pablo/upload_patafornia.py >> /home/pablo/raspilog.txt 2>&1 
+* 1 * * * find /home/pablo/beach -type f -mtime +3 -delete  2>&1

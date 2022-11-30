@@ -7,11 +7,10 @@ import os
 from datetime import datetime 
 from matplotlib import pyplot as plt
 
-# model_path='/home/pablo/DS/playa/clients_q6FvDq3pIxV4sVjE7qZfCTSn9Wx2_JwAu2EgoVfYB6qO7yL2m_Nv0yDxCVuLihGDGghhuf.tflite'
-model_path='/home/pablo/Desktop/playas/model.tflite'
-imgs_path='/home/pablo/Desktop/playas/'
-labels_file='/home/pablo/DS/playa/labels.txt'
-save_path='/home/pablo/Desktop/plt.jpg'
+model_path='/home/pablo/model.tflite'
+imgs_path='/home/pablo/beach/'
+labels_file='/home/pablo/labels.txt'
+save_path='/home/pablo/beach/plt.jpg'
 
 interpreter = tflite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
@@ -53,16 +52,14 @@ for file in sorted(globs):
     print('output data', output_data)
 inference_time = time.perf_counter() - start
 print('inference time: ','%.1fms' % (inference_time * 1000))    
-print(inference_ouput)
+
 inference_ouput=inference_ouput.transpose()
 pointer=0
-print('fin transpose')
-# plt.style.use('dark_background')
+plt.style.use('dark_background')
 plt.rcParams["figure.figsize"] = [8, 6]
 fig, ax = plt.subplots()
 ax.stackplot(img_seq, inference_ouput*100)
-
 plt.legend(labels)
 plt.xticks(rotation = 45)
 plt.savefig(save_path)
-plt.show()
+

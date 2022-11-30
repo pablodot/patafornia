@@ -16,6 +16,7 @@ for file in files:
 		blob.upload_from_filename(file)
 		blob.make_public()
 		print("url", blob.public_url)
+
 	else:
 		if blob.name == 'plt.jpg':
 			blob.upload_from_filename(file)
